@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from .functions import UserDefinedJythonFunction
 
 from pyspark.sql.catalog import Catalog
-from pyspark.sql.type import DataType, StringType
+from pyspark.sql.types import DataType, StringType
 
 
 def registerJythonFunction(self, name, fn, returnType=StringType()):
