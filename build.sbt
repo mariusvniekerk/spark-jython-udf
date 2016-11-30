@@ -1,5 +1,7 @@
 spName := "mariusvniekerk/spark-jython-udf"
 
+organization := "mariusvniekerk"
+
 name := "spark-jython-udf"
 
 version := "0.0.1"
