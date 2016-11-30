@@ -1,5 +1,7 @@
 spName := "mariusvniekerk/spark-jython-udf"
 
+spAppendScalaVersion := true
+
 organization := "mariusvniekerk"
 
 name := "spark-jython-udf"
