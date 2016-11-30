@@ -268,6 +268,6 @@ private[sql] object JythonConverter {
   * Starting the Jython script engine is slow, so try and do it infrequently.
   */
 private[sql] object JythonFunc {
-  lazy val mgr = new ScriptEngineManager()
-  lazy val jython = mgr.getEngineByName("python")
+  @transient lazy val mgr = new ScriptEngineManager()
+  @transient lazy val jython = mgr.getEngineByName("python")
 }
