@@ -15,11 +15,11 @@ script:
   - wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz
   - tar xf spark-2.0.2-bin-hadoop2.7.tgz
   # TODO make this less fragile.
-  - export PACKAGE="file://$(pwd)/target/spark-jython-udf-0.0.1.zip"
-  - echo $PACKAGE
+  - export SPARK_PACKAGE_JAR=`ls $(pwd)/target/scala-2.11/spark-jython-udf_2.11*.jar`
+  - echo $SPARK_PACKAGE_JAR
   # Ensure that we have our python package on our classpath for now
   - export PYTHONPATH="$(pwd)/python:$PYTHONPATH"
-  - spark-2.0.2-bin-hadoop2.7/bin/spark-submit --packages mariusvniekerk:spark-jython-udf:0.0.1 --repositories file://$HOME/.ivy2/local examples/jython_udf_perf.py examples/jython_udf_perf.py 1 1
+  - spark-2.0.2-bin-hadoop2.7/bin/spark-submit --jars file://$SPARK_PACKAGE_JAR examples/jython_udf_perf.py examples/jython_udf_perf.py 1 1
   
 # Cache these at the end of the build
 cache:
