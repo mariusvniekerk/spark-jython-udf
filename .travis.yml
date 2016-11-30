@@ -1,6 +1,6 @@
 sudo: required
 dist: trusty
-language: node_js
+language: scala
 python:
   - "2.7"
 addons:
