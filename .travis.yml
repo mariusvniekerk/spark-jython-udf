@@ -13,5 +13,5 @@ script:
   - wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz
   - tar xf spark-2.0.2-bin-hadoop2.7.tgz
   # TODO make this less fragile.
-  - spark-2.0.2-bin-hadoop2.7/bin/spark-submit --archive file://`pwd`/target/spark-jython-udf-0.0.1.zip examples/jython_udf_perf.py
+  - spark-2.0.2-bin-hadoop2.7/bin/spark-submit --jars file://`pwd`/target/spark-jython-udf-0.0.1.zip examples/jython_udf_perf.py
 
