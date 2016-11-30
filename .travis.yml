@@ -1,6 +1,8 @@
 sudo: false
 dist: trusty
 language: scala
+scala:
+  - 2.11.8
 before_install:
   - python -V
   - pip -V
