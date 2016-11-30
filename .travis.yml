@@ -1,0 +1,27 @@
+sudo: required
+dist: trusty
+language: node_js
+python:
+  - "2.7"
+addons:
+  apt:
+    packages:
+      - openjdk-8-jdk
+before_install:
+  - sudo apt-get -y install python-pip python-dev
+  - sudo pip install -U setuptools
+  - sudo pip install -U virtualenvwrapper
+  - python -V
+  - pip -V
+script:
+  - sbt spDist
+  # Install a version of Spark to test this against
+  - wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz
+  - tar xf spark-2.0.2-bin-hadoop2.7.tgz
+  # TODO make this less fragile.
+  - spark-2.0.2-bin-hadoop2.7/bin/spark-submit --packages file://$CWD/target/spark-jython-udf-0.0.1.zip examples/jython_udf_perf.py
+
+env:
+  global:
+    - CXX=g++-4.8
+    - NODE_ENV=development
