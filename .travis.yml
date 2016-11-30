@@ -1,19 +1,11 @@
-sudo: required
+sudo: false
 dist: trusty
 language: scala
-python:
-  - "2.7"
-addons:
-  apt:
-    packages:
-      - openjdk-8-jdk
 before_install:
-  - sudo apt-get -y install python-pip python-dev
-  - sudo pip install -U setuptools
-  - sudo pip install -U virtualenvwrapper
   - python -V
   - pip -V
 script:
+  - jdk_switcher use openjdk8
   - sbt spDist
   # Install a version of Spark to test this against
   - wget http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz
