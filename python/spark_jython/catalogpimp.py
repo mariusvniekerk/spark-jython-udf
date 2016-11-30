@@ -24,7 +24,7 @@ def registerJythonFunction(self, name, fn, returnType=StringType()):
     :param returnType: a :class:`DataType` object
     """
     udf = UserDefinedJythonFunction(fn, returnType, name)
-    jython = self._jsparkSession.jvm.org.apache.spark.sql.Jython
+    jython = self._sparkSession.jvm.org.apache.spark.sql.Jython
 
     pimpedRegistrar = jython.JythonUDFRegistration(self._jsparkSession.udf())
 
