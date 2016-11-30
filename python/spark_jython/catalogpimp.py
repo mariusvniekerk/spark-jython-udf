@@ -28,7 +28,7 @@ def registerJythonFunction(self, name, fn, returnType=StringType()):
 
     pimpedRegistrar = jython.JythonUDFRegistration(self._jsparkSession.udf())
 
-    pimpedRegistrar.registerJython(name, udf._judf)
+    pimpedRegistrar.registerJythonUDF(name, udf._judf)
     return udf
 
 
