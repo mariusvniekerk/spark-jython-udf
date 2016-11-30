@@ -60,6 +60,7 @@ def benchmark(textInputPath, repeat, number):
     tokenize = lambda x: x.split(" ")
     returnUDFType = ArrayType(StringType())
     # session.catalog.registerFunction does not return under spark 2.0
+    from pyspark.sql.functions import UserDefinedFunction
     tokenizeUDF = UserDefinedFunction(tokenize, returnUDFType, 'split')
     session.catalog.registerFunction("split", tokenize, returnUDFType)
 
