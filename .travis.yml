@@ -16,7 +16,9 @@ script:
   # TODO make this less fragile.
   - export PACKAGE="file://$(pwd)/target/spark-jython-udf-0.0.1.zip"
   - echo $PACKAGE
-  - spark-2.0.2-bin-hadoop2.7/bin/spark-submit --jars $PACKAGE --py-files=$PACKAGE examples/jython_udf_perf.py
+  # Ensure that we have our python package on our classpath for now
+  - export PYTHONPATH="$(pwd)/python:$PYTHONPATH"
+  - spark-2.0.2-bin-hadoop2.7/bin/spark-submit --jars $PACKAGE examples/jython_udf_perf.py
   
 # Cache these at the end of the build
 cache:
