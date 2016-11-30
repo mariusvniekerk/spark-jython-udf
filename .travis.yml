@@ -21,7 +21,3 @@ script:
   # TODO make this less fragile.
   - spark-2.0.2-bin-hadoop2.7/bin/spark-submit --packages file://$CWD/target/spark-jython-udf-0.0.1.zip examples/jython_udf_perf.py
 
-env:
-  global:
-    - CXX=g++-4.8
-    - NODE_ENV=development
