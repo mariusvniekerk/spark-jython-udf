@@ -18,6 +18,7 @@ object Jython {
 
     private def functionRegistry: FunctionRegistry = {
       val field = this.udfRegistration.getClass.getDeclaredField("functionRegistry")
+      field.setAccessible(true)
       field.get(this.udfRegistration).asInstanceOf[FunctionRegistry]
     }
 
