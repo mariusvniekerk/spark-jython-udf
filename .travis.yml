@@ -6,7 +6,7 @@ scala:
 before_install:
   - python -V
   - pip -V
-  - pip install six
+  - pip install six dill
 script:
   - jdk_switcher use openjdk8
   - sbt spDist
