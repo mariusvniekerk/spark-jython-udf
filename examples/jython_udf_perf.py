@@ -59,7 +59,10 @@ def benchmark(textInputPath, repeat, number):
     print("Benchmarking wordcount:")
     tokenize = lambda x: x.split(" ")
     returnUDFType = ArrayType(StringType())
-    tokenizeUDF = session.catalog.registerFunction("split", tokenize, returnUDFType)
+    # session.catalog.registerFunction does not return under spark 2.0
+    tokenizeUDF = UserDefinedFunction(tokenize, returnUDFType, 'split')
+    session.catalog.registerFunction("split", tokenize, returnUDFType)
+
     tokenizeJythonUDF = session.catalog.registerJythonFunction("split", tokenize, returnUDFType)
     rdd = sc.textFile(textInputPath)
     rdd.cache()
