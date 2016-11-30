@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mariusvniekerk/spark-jython-udf.svg?branch=master)](https://travis-ci.org/mariusvniekerk/spark-jython-udf)
+
 # spark-jython-udf
 
 This is an initial attempt at a spark package that captures the core concepts from
