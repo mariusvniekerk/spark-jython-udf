@@ -10,3 +10,20 @@ an installable spark-package.
 
 This would not have been possible without the considerable efforts of @holdenk pushing 
 python forward in the Apache Spark community
+
+
+## Usage
+
+In a python instance that already has a spark context instantiated and the spark-jython library loaded.
+
+```python
+import spark_jython
+from pyspark.sql.types import *
+
+def jythonfn(arg1):
+    return arg1.split(" ")
+
+returnUDFType = ArrayType(StringType())
+jythonUDF = spark_session.catalog.registerJythonFunction("name", function, returnUDFType)
+
+```
